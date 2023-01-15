@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Footer (props) {
+function Card (card) {
     return (
         <footer className="footer">
             <p className="footer__autho">&copy; 2022 Mesto Russia</p>
@@ -8,4 +8,4 @@ function Footer (props) {
     )
 }
 
-export default Footer
+export default Card

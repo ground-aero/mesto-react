@@ -9,7 +9,7 @@ export default function Main(props) {
     const [userDescription, setUserDescription ] = useState('')
     const [userName, setUserName] = useState('')
 
-    const [cards, setCards] = useState([])
+    const [isCards, setCards] = useState([])
 
     useEffect(() => {
         api.getUser()
@@ -19,7 +19,7 @@ export default function Main(props) {
                 setUserDescription(userData.about)
                 setUserAvatar(userData.avatar)
             })
-            .catch((err) => {console.log(err)})
+            .catch((err) => {console.log(`Ошибка запроса загрузки данных пользователя ${err}`)})
     }, [])
 
     useEffect(() => {
@@ -31,7 +31,7 @@ export default function Main(props) {
             .catch((err) => {console.log(err)})
     }, [])
 
-    console.log(cards)
+    // console.log(isCards)
 
     return (
         <main className="content">
@@ -57,7 +57,7 @@ export default function Main(props) {
             <section className="elements content__section">
                 <ul className="elements__list">
 
-                    {cards.map((card, ind) => (
+                    {isCards.map((card, ind) => (
                         <li key={ind} className="card">
                             <button className="card__btn-del opacity-transition" type="button" aria-label="delete"></button>
                             <img className="card__img" alt="#" src={card.link} style={{ backgroundImage: `url(${card.link})` }}/>
@@ -74,7 +74,6 @@ export default function Main(props) {
 
                 </ul>
             </section>
-
 
 
         </main>
