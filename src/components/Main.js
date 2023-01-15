@@ -2,14 +2,13 @@ import React, {useState, useEffect} from 'react';
 import avatarPath from '../images/avatar.png'
 import api from '../utils/api'
 import {logDOM} from "@testing-library/react";
+import Card from "./Card";
 
-export default function Main(props) {
+function Main(props) {
 
     const [userAvatar, setUserAvatar] = useState('')
     const [userDescription, setUserDescription ] = useState('')
     const [userName, setUserName] = useState('')
-
-    const [isCards, setCards] = useState([])
 
     useEffect(() => {
         api.getUser()
@@ -21,17 +20,6 @@ export default function Main(props) {
             })
             .catch((err) => {console.log(`Ошибка запроса загрузки данных пользователя ${err}`)})
     }, [])
-
-    useEffect(() => {
-        api.getAllCards()
-            .then((cardsData) => {
-                console.log(cardsData)
-                setCards(cardsData)
-            })
-            .catch((err) => {console.log(err)})
-    }, [])
-
-    // console.log(isCards)
 
     return (
         <main className="content">
@@ -56,22 +44,7 @@ export default function Main(props) {
 
             <section className="elements content__section">
                 <ul className="elements__list">
-
-                    {isCards.map((card, ind) => (
-                        <li key={ind} className="card">
-                            <button className="card__btn-del opacity-transition" type="button" aria-label="delete"></button>
-                            <img className="card__img" alt="#" src={card.link} style={{ backgroundImage: `url(${card.link})` }}/>
-                            <div className="card__info-wrap">
-                                <h2 className="card__title">{card.name}</h2>
-                                <div className="card__btn-like-wrap">
-                                    <button className="card__btn-like opacity-transition" type="button"
-                                            aria-label="like"></button>
-                                    <span className="card__btn-like-count">{card.likes.length}</span>
-                                </div>
-                            </div>
-                        </li>
-                    ))}
-
+                    <Card/>
                 </ul>
             </section>
 
@@ -79,3 +52,5 @@ export default function Main(props) {
         </main>
     )
 }
+
+export default Main
