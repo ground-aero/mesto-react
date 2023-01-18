@@ -1,12 +1,9 @@
 import React from 'react';
 
 function ImagePopup({ card, name, onImageClick, onClose }) {
-    console.log(card)
-    // console.log(card.link)
+    // console.log(card)
 
     return (
-
-        <>
             <div className={`popup popup_img-bg popup_type_${ name } ${card.link && 'popup_opened'} id="overlay_img-zoom`}>
                 <div className="popup__container-img popup__container-img_type_zoomer">
                     <button
@@ -16,7 +13,6 @@ function ImagePopup({ card, name, onImageClick, onClose }) {
                     <h3 className="popup__subtitle">{card.name}</h3>
                 </div>
             </div>
-        </>
     )
 }
 

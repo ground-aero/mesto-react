@@ -18,7 +18,6 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, children }
             })
             .catch((err) => {console.log(err)})
     }, [])
-    console.log(isCards)// массив карточек
 
     useEffect(() => {
         api.getUser()
@@ -37,7 +36,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, children }
             <section id="profile" className="profile content__section">
 
                 <span className="profile__avatar-edit-btn" onClick={ onEditAvatar }>
-                    <img className="profile__avatar" src={userAvatar} style={{ backgroundImage: `url(${userAvatar})` }} alt="бюст улыбающегося человека в красной шапке"/>
+                    <img className="profile__avatar" src={userAvatar} alt="бюст улыбающегося человека в красной шапке"/>
                 </span>
 
                 <div className="profile__elements-wrap">

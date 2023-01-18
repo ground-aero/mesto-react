@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import api from "../utils/api";
 
 function Card ({card, onCardClick}) {
-    console.log(card)
+    // console.log(card)
 
     function handleClick() {
         onCardClick(card);
