@@ -9,10 +9,9 @@ function Card ({card, onCardClick}) {
     }
 
     return (
-            <>
-                <li className="card">
+            <li className="card">
                     <button className="card__btn-del opacity-transition" type="button" aria-label="delete"></button>
-                    <img className="card__img" src={ card.link} alt="#" onClick={handleClick} />
+                    <img className="card__img" src={ card.link} alt={ card.name } onClick={handleClick} />
                     <div className="card__info-wrap">
                         <h2 className="card__title">{ card.name}</h2>
                         <div className="card__btn-like-wrap">
@@ -21,9 +20,7 @@ function Card ({card, onCardClick}) {
                             <span className="card__btn-like-count">{ card.likes.length}</span>
                         </div>
                     </div>
-                </li>
-
-            </>
+            </li>
 
     )
 }

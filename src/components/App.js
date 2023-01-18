@@ -11,39 +11,39 @@ function App() {
 
     function handleEditAvatarClick() {
         // return document.querySelector('#overlay_avatar').classList.add('popup_opened')
-        setEditAvatarPopupOpen(true)
+        setIsEditAvatarPopupOpen(true)
     }
     function handleEditProfileClick() {
         // return document.querySelector('#overlay_edit').classList.add('popup_opened')
-        setEditProfilePopupOpen(true)
+        setIsEditProfilePopupOpen(true)
     }
     function handleAddPlaceClick() {
         // return document.querySelector('#overlay_add-place').classList.add('popup_opened')
-        setAddPlacePopupOpen(true)
+        setIsAddPlacePopupOpen(true)
     }
 
     function handleImageClick() {
-        setImagePopupOpen(true)
+        setIsImagePopupOpen(true)
     }
 
     function closeAllPopups() {
-        setEditAvatarPopupOpen(false)
-        setEditProfilePopupOpen(false)
-        setAddPlacePopupOpen(false)
+        setIsEditAvatarPopupOpen(false)
+        setIsEditProfilePopupOpen(false)
+        setIsAddPlacePopupOpen(false)
         setSelectedCard({})
     }
 
     function handleCardClick(card) {
         setSelectedCard(card)
-        // setImagePopupOpen(true)
+        // setIsImagePopupOpen(true)
     }
 
-    const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false)
-    const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false)
-    const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false)
-    const [isImagePopupOpen, setImagePopupOpen] = useState(false)
+    const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false)
+    const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false)
+    const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false)
+    const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false)
 
-    const [selectedCard, setSelectedCard] = useState({} )//Показывайте полноразмерную картинку при клике
+    const [selectedCard, setSelectedCard] = React.useState({} )//Показывайте полноразмерную картинку при клике
     // console.log(selectedCard)
 
     return (
