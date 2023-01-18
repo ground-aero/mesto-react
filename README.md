@@ -71,3 +71,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ###
 Тех Задание ПР#10: [https://concrete-web-bad.notion.site/10-44b0141395d04b70a56067dde7d0647d](https://concrete-web-bad.notion.site/10-44b0141395d04b70a56067dde7d0647d)
+
+Check-List, PW#10: [https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-10.pdf](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-10.pdf)
+
