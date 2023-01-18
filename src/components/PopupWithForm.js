@@ -8,7 +8,7 @@ function PopupWithForm({ name, title, textButton, isOpen, onClose, children }) {
         <>
         <div className={`popup popup_type_${ name } ${ isOpen ? 'popup_opened' : '' }`}>
             <div className="popup__container">
-                <button className="popup__btn-close opacity-transition" onClick={onClose} type="button"
+                <button className="popup__btn-close opacity-transition" onClick={ onClose } type="button"
                         aria-label="close"></button>
                 <form action="src/components/App" className="popup__form" name={ name } noValidate>
                     <h2 className="popup__title">{ title }</h2>

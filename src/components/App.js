@@ -4,6 +4,7 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
+import Card from './Card'
 import ImagePopup from "./ImagePopup";
 
 function App() {
@@ -21,19 +22,29 @@ function App() {
         setAddPlacePopupOpen(true)
     }
 
+    function handleImageClick() {
+        setImagePopupOpen(true)
+    }
+
     function closeAllPopups() {
         setEditAvatarPopupOpen(false)
         setEditProfilePopupOpen(false)
         setAddPlacePopupOpen(false)
+        setSelectedCard({})
     }
 
-    const [state, setState] = useState(0);
-// console.log(state)
-// console.log(setState)
+    function handleCardClick(card) {
+        setSelectedCard(card)
+        // setImagePopupOpen(true)
+    }
+
     const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false)
     const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false)
     const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false)
+    const [isImagePopupOpen, setImagePopupOpen] = useState(false)
 
+    const [selectedCard, setSelectedCard] = useState({} )//Показывайте полноразмерную картинку при клике
+    // console.log(selectedCard)
 
     return (
 
@@ -45,12 +56,14 @@ function App() {
                 onEditAvatar={ handleEditAvatarClick }
                 onEditProfile={ handleEditProfileClick }
                 onAddPlace={ handleAddPlaceClick }
-                />
+
+                onCardClick={ handleCardClick }
+            />
 
             <Footer />
 
             <PopupWithForm
-                isOpen={isEditAvatarPopupOpen}
+                isOpen={ isEditAvatarPopupOpen }
                 onClose={closeAllPopups}
                 title={"Заменить аватар"}
                 name={"edit-avatar"}
@@ -65,7 +78,7 @@ function App() {
             </PopupWithForm>
 
             <PopupWithForm
-                isOpen={isEditProfilePopupOpen}
+                isOpen={ isEditProfilePopupOpen }
                 onClose={closeAllPopups}
                 title={"Редактировать профиль"}
                 name={"profile"}
@@ -87,7 +100,7 @@ function App() {
             </PopupWithForm>
 
             <PopupWithForm
-                isOpen={isAddPlacePopupOpen}
+                isOpen={ isAddPlacePopupOpen }
                 onClose={closeAllPopups}
                 title={"Новое место"}
                 name={"place"}
@@ -110,7 +123,12 @@ function App() {
 
 
 
-            <ImagePopup/>
+            <ImagePopup
+                onImageClick={ handleImageClick }
+                card={ selectedCard }
+                onClose={ closeAllPopups }
+                name={"zoom"}
+            />
 
         </div>
 
