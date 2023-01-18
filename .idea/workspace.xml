@@ -2,36 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="327e82c1-2900-473b-bba7-b793d3bd8263" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/build/asset-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/logo192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/css/main.c64c6b94.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/css/main.c64c6b94.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/js/787.5530211c.chunk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/js/787.5530211c.chunk.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/js/main.c813ae87.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/js/main.c813ae87.js.LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/js/main.c813ae87.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/Inter-Black.c6938660eec019fefd68.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/Inter-Medium.9053572c46aeb4b16caa.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/Inter-Regular.8c206db99195777c6769.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/add-btn-big.6f86ece55e54220c5485.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/add-button.6f41966c71dd7895857f.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/close-btn.2ceb783afbab75916ddc.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/del-btn.823b0cf1b0b7e9cb7cad.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/edit-button.a1892ea72cb87c8fc3aa.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/like-active.fe17a515669479b1e649.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/static/media/logo.03b78ada3425e9132ff3db7ea8f4a6f6.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +67,8 @@
       <workItem from="1674026034334" duration="301000" />
       <workItem from="1674026677356" duration="640000" />
       <workItem from="1674027592621" duration="18887000" />
-      <workItem from="1674055309138" duration="5440000" />
+      <workItem from="1674055309138" duration="6664000" />
+      <workItem from="1674063412091" duration="2120000" />
     </task>
     <servers />
   </component>
