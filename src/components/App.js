@@ -7,7 +7,7 @@ import PopupWithForm from './PopupWithForm';
 import Card from './Card'
 import ImagePopup from "./ImagePopup";
 import api from '../utils/api'
-// import {CurrentUserContext} from '../contexts/CurrentUserContext';
+import CurrentUserContext from '../contexts/CurrentUserContext';
 // import {Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -66,7 +66,7 @@ function App() {
     return (
 
         <div className="page__container">
-            <CurrentUserContext.Provider value=''>
+            <CurrentUserContext.Provider value={currentUser}>
                 <Header />
                 <Main
                     onEditAvatar={ handleEditAvatarClick }
