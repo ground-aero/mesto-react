@@ -49,16 +49,13 @@ function App() {
     const [selectedCard, setSelectedCard] = React.useState({} )//Показывайте полноразмерную картинку при клике
     // console.log(selectedCard)
 
-    const [currentUser, setCurrentUser] = React.useState()
+    const [currentUser, setCurrentUser] = useState({name: '', about: ''})
 
     useEffect(() => {
         api.getUser()
             .then((userData) => {
                 console.log(userData)
-                setCurrentUser(userData.about)
-                setCurrentUser(userData.avatar)
-                setCurrentUser(userData.name)
-                setCurrentUser(userData._id)
+                setCurrentUser(userData)
             })
             .catch((err) => {console.log(`Ошибка данных при загрузке Пользователя: ${err}`)})
     }, [])

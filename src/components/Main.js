@@ -5,9 +5,11 @@ import Card from "./Card";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, children }) {
-    const [userAvatar, setUserAvatar] = useState('')
-    const [userDescription, setUserDescription ] = useState('')
-    const [userName, setUserName] = useState('')
+
+    const currentUser = React.useContext(CurrentUserContext);
+    // const [userAvatar, setUserAvatar] = useState('')
+    // const [userDescription, setUserDescription ] = useState('')
+    // const [userName, setUserName] = useState('')
 
     const [isCards, setCards] = useState([])
 
@@ -20,58 +22,59 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, children }
             .catch((err) => {console.log(err)})
     }, [])
 
-    useEffect(() => {
-        api.getUser()
-            .then((userData) => {
-                // console.log(data)
-                setUserName(userData.name)
-                setUserDescription(userData.about)
-                setUserAvatar(userData.avatar)
-            })
-            .catch((err) => {console.log(`Ошибка запроса загрузки данных пользователя ${err}`)})
-    }, [])
+    // useEffect(() => {
+    //     api.getUser()
+    //         .then((userData) => {
+    //             // console.log(data)
+    //             setUserName(userData.name)
+    //             setUserDescription(userData.about)
+    //             setUserAvatar(userData.avatar)
+    //         })
+    //         .catch((err) => {console.log(`Ошибка запроса загрузки данных пользователя ${err}`)})
+    // }, [])
 
     return (
-        <main className="content">
+      <main className="content">
+        <section id="profile" className="profile content__section">
+          <span className="profile__avatar-edit-btn" onClick={onEditAvatar}>
+            <img
+              className="profile__avatar"
+              src={ currentUser.avatar }
+              alt="бюст улыбающегося человека в красной шапке"
+            />
+          </span>
 
-            <section id="profile" className="profile content__section">
+          <div className="profile__elements-wrap">
+            <div className="profile__name-wrap">
+              <h1 className="profile__name">{ currentUser.name }</h1>
+              <button
+                className="btn profile__btn-edit opacity-transition"
+                type="button"
+                onClick={onEditProfile}
+                aria-label="edit"
+              ></button>
+            </div>
+            <p className="profile__job">{ currentUser.about }</p>
+          </div>
+          <button
+            className="btn profile__btn-addplace opacity-transition"
+            type="button"
+            onClick={onAddPlace}
+            aria-label="add"
+          ></button>
+        </section>
 
-                <span className="profile__avatar-edit-btn" onClick={ onEditAvatar }>
-                    <img className="profile__avatar" src={userAvatar} alt="бюст улыбающегося человека в красной шапке"/>
-                </span>
-
-                <div className="profile__elements-wrap">
-                    <div className="profile__name-wrap">
-                        <h1 className="profile__name">{userName}</h1>
-                        <button className="btn profile__btn-edit opacity-transition" type="button"
-                                onClick={ onEditProfile } aria-label="edit"></button>
-                    </div>
-                    <p className="profile__job">{userDescription}</p>
-                </div>
-                <button className="btn profile__btn-addplace opacity-transition" type="button"
-                        onClick={ onAddPlace } aria-label="add"></button>
-            </section>
-
-            <section className="elements content__section">
-                <ul className="elements__list">
-
-                    { isCards.map((card, ind) => {
-                        return (
-                            <Card
-                            card={ card }
-                            key={ card._id }
-                            onCardClick={ onCardClick }
-                            />
-                        )
-                      })
-                    }
-
-                </ul>
-            </section>
-
-
-        </main>
-    )
+        <section className="elements content__section">
+          <ul className="elements__list">
+            {isCards.map((card, ind) => {
+              return (
+                <Card card={card} key={card._id} onCardClick={onCardClick} />
+              );
+            })}
+          </ul>
+        </section>
+      </main>
+    );
 }
 
 export default Main
