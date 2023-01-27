@@ -1,8 +1,15 @@
 import React, {useEffect, useState} from 'react'
 import api from "../utils/api";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function Card ({ card, onCardClick }) {
-    // console.log(card)
+    console.log(card)
+    const currentUser = React.useContext(CurrentUserContext)
+      console.log(currentUser)
+    // Определяем, являемся ли мы владельцем текущей карточки
+    const isOwn = card.owner._id === currentUser._id;
+
+
 
     function handleClick() {
         onCardClick(card);
@@ -10,7 +17,7 @@ function Card ({ card, onCardClick }) {
 
     return (
             <li className="card">
-                    <button className="card__btn-del opacity-transition" type="button" aria-label="delete"></button>
+                {isOwn && <button className="card__btn-del onClick={handleDeleteClick} opacity-transition" type="button" aria-label="delete" />}
                     <img className="card__img" src={ card.link } alt={ card.name } onClick={handleClick} />
                     <div className="card__info-wrap">
                         <h2 className="card__title">{ card.name }</h2>

@@ -7,6 +7,7 @@ import CurrentUserContext from "../contexts/CurrentUserContext";
 function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, children }) {
 
     const currentUser = React.useContext(CurrentUserContext);
+    // console.log(currentUser)
     // const [userAvatar, setUserAvatar] = useState('')
     // const [userDescription, setUserDescription ] = useState('')
     // const [userName, setUserName] = useState('')
