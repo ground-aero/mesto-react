@@ -1,5 +1,6 @@
 import React from 'react';
 
+/* @props card = selectedCard */
 function ImagePopup({ card, name, onImageClick, onClose }) {
     // console.log(card)
 

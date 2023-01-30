@@ -1,8 +1,9 @@
 //класс не связан с пользовательским интерфейсом, а полностью занят отправкой запросов на сервер и получением от них ответа.
+
+/** @param apiConfig - опции для работы с API (serverURL - url сервера, headers - заголовки в виде объекта) */
 export class Api {
     constructor(apiConfig) {
         this._apiConfig = apiConfig;
-        this._methodName = this._methodName.bind(this);
     }
 
 
@@ -95,21 +96,18 @@ export class Api {
 //             .then(res => this._onResponse(res))
 //     }
 
+//ставит/удаляет лайк
+/* @param cardLiked - boolean, если лайк есть, удаление, нет - установка
+/* @param cardID - ID карточки
+/* @returns {Promise<Response>} - объект карточки / текст ошибки */
     changeLikeCardStatus(cardId, isLiked) {
-        this._methodName = isLiked?"DELETE":"PUT";
-
+console.log(isLiked)
         return fetch(`${this._apiConfig.baseUrl}/cards/likes/${cardId}`, {
-
-            method: this._methodName,
+            method: isLiked?"DELETE":"PUT",
             headers: this._apiConfig.headers
 
-        }).then((res) =>
-            res.ok
-                ? res.json()
-                : Promise.reject(`Error! ${res.statusText}`).catch((err) =>
-                    console.log(err)
-                )
-        );
+        })
+            .then(res => this._onResponse(res))
     }
 
 

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import api from "../utils/api";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function Card ({ card, onCardClick }) {
+function Card ({ card, onCardClick, onCardLike }) {
     // console.log(card)
     const currentUser = React.useContext(CurrentUserContext)
       // console.log(currentUser)
@@ -20,6 +20,13 @@ function Card ({ card, onCardClick }) {
         onCardClick(card);
     }
 
+    function handleLikeClick() {
+        console.log('clicked heart')
+        onCardLike(card);
+    }
+
+
+
     return (
             <li className="card">
                 {isOwn && <button className="card__btn-del onClick={handleDeleteClick} opacity-transition" type="button" aria-label="delete" />}
@@ -27,7 +34,7 @@ function Card ({ card, onCardClick }) {
                     <div className="card__info-wrap">
                         <h2 className="card__title">{ card.name }</h2>
                         <div className="card__btn-like-wrap">
-                            <button className={cardLikeButtonClassName} aria-label="like"></button>
+                            <button className={cardLikeButtonClassName} onClick={handleLikeClick} aria-label="like"></button>
                             <span className="card__btn-like-count">{ card.likes.length}</span>
                         </div>
                     </div>
