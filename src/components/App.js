@@ -12,7 +12,6 @@ import CurrentUserContext from '../contexts/CurrentUserContext';
 
 /**
  * @returns {JSX.Element}
- * @constructor
  */
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
@@ -35,6 +34,9 @@ function App() {
   /** Состояние массива карточек */
   const [isCards, setCards] = React.useState([]);
   // console.log(isCards);
+
+  /** Состояние выбранной для удаления карточки */
+  const [deleteCard, setDeleteCard] = React.useState({_id: ""});
 
 
   /** Открывает всплывающее редактирование аватара */
@@ -71,8 +73,8 @@ function App() {
     // setIsImagePopupOpen(true)
   }
 
+  /** ставит/удаляет лайки, @param card - объект карточки */
   function handleCardLike(card) {
-    // ставит/удаляет лайки, @param card - объект карточки
     const isLiked = card.likes.some((i) => i._id === currentUser._id); // Снова проверяем, есть ли уже лайк на этой карточке
     api
       .changeLikeCardStatus(card._id, isLiked) // Отправляем запрос в API и получаем обновлённые данные карточки
@@ -83,29 +85,17 @@ function App() {
       });
   }
 
-  // useEffect(() => {
-  //   api
-  //     .getUser()
-  //     .then((userData) => {
-  //       // console.log(userData)
-  //       setCurrentUser(userData);
-  //     })
-  //     .catch((err) => {
-  //       console.log(`Ошибка данных при загрузке Пользователя: ${err}`);
-  //     });
-  // }, []);
-  //
-  // useEffect(() => {
-  //   api
-  //     .getAllCards()
-  //     .then((cardsData) => {
-  //       // console.log(cardsData)
-  //       setCards(cardsData);
-  //     })
-  //     .catch((err) => {
-  //       console.log(`Ошибка данных при загрузке карточек: ${err}`);
-  //     });
-  // }, []);
+  function handleCardDelete(card) {
+    api.deleteCard(card._id)
+        .then(() => {
+          /** создать копию массива, исключив из него удалённую карточку. */
+          setCards((isCards) => isCards.filter(del => del !== card))
+        })
+        .catch((err) => {
+          console.log(`Ошибка данных при удалении карточки: ${err}`);
+        });
+  }
+
 
   useEffect(() => {
     Promise.all([api.getUser(), api.getAllCards()])
@@ -120,6 +110,7 @@ function App() {
         });
   }, [])
 
+
   return (
     <div className="page__container">
       <CurrentUserContext.Provider value={currentUser}>
@@ -132,6 +123,7 @@ function App() {
           isCards={isCards}
           onCardClick={handleCardClick}
           onCardLike={handleCardLike} //лайк/дизлайк
+          onCardDelete={handleCardDelete}
         />
         <Footer />
 

@@ -2,16 +2,16 @@ import React, {useEffect, useState} from 'react'
 import api from "../utils/api";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function Card ({ card, onCardClick, onCardLike }) {
+function Card ({ card, onCardClick, onCardLike, onCardDelete  }) {
     // console.log(card)
-    const currentUser = React.useContext(CurrentUserContext)
-      // console.log(currentUser)
-    // Определяем, являемся ли мы владельцем текущей карточки
-    const isOwn = card.owner._id === currentUser._id;
 
-    // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
+    /** Контекст currentUser */
+    const currentUser = React.useContext(CurrentUserContext)
+    /** Определяем, являемся ли мы владельцем текущей карточки */
+    const isOwn = card.owner._id === currentUser._id;
+    /** Определяем, есть ли у карточки лайк, поставленный текущим пользователем */
     const isLiked = card.likes.some(i => i._id === currentUser._id);
-    // Создаём переменную, которую после зададим в `className` для кнопки лайка
+    /** Создаём переменную, которую после зададим в `className` для кнопки лайка */
     const cardLikeButtonClassName = (
         `card__btn-like ${isLiked && 'card__btn-like_active'}`
     );
@@ -25,11 +25,15 @@ function Card ({ card, onCardClick, onCardLike }) {
         onCardLike(card);
     }
 
+    function handleDeleteClick() {
+        onCardDelete(card)
+        console.log('deleted card')
+    }
 
 
     return (
             <li className="card">
-                {isOwn && <button className="card__btn-del onClick={handleDeleteClick} opacity-transition" type="button" aria-label="delete" />}
+                {isOwn && <button className="card__btn-del opacity-transition" onClick={handleDeleteClick} type="button" aria-label="delete" />}
                     <img className="card__img" src={ card.link } alt={ card.name } onClick={handleClick} />
                     <div className="card__info-wrap">
                         <h2 className="card__title">{ card.name }</h2>

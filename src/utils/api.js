@@ -68,9 +68,9 @@ export class Api {
             .then(res => this._onResponse(res))
     }
 
-    deleteCard(id) {
+    deleteCard(cardId) {
         // console.log(`${this._apiConfig.baseUrl}/cards/${id}`)
-        return fetch(`${this._apiConfig.baseUrl}/cards/${id}`, {
+        return fetch(`${this._apiConfig.baseUrl}/cards/${cardId}`, {
             method: 'DELETE',
             headers: this._apiConfig.headers
         })
@@ -96,7 +96,7 @@ export class Api {
 //             .then(res => this._onResponse(res))
 //     }
 
-//ставит/удаляет лайк
+/** ставит/удаляет лайк
 /* @param cardLiked - boolean, если лайк есть, удаление, нет - установка
 /* @param cardID - ID карточки
 /* @returns {Promise<Response>} - объект карточки / текст ошибки */
