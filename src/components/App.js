@@ -1,5 +1,5 @@
 // import './App.css';
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
@@ -83,29 +83,42 @@ function App() {
       });
   }
 
-  useEffect(() => {
-    api
-      .getUser()
-      .then((userData) => {
-        // console.log(userData)
-        setCurrentUser(userData);
-      })
-      .catch((err) => {
-        console.log(`Ошибка данных при загрузке Пользователя: ${err}`);
-      });
-  }, []);
+  // useEffect(() => {
+  //   api
+  //     .getUser()
+  //     .then((userData) => {
+  //       // console.log(userData)
+  //       setCurrentUser(userData);
+  //     })
+  //     .catch((err) => {
+  //       console.log(`Ошибка данных при загрузке Пользователя: ${err}`);
+  //     });
+  // }, []);
+  //
+  // useEffect(() => {
+  //   api
+  //     .getAllCards()
+  //     .then((cardsData) => {
+  //       // console.log(cardsData)
+  //       setCards(cardsData);
+  //     })
+  //     .catch((err) => {
+  //       console.log(`Ошибка данных при загрузке карточек: ${err}`);
+  //     });
+  // }, []);
 
   useEffect(() => {
-    api
-      .getAllCards()
-      .then((cardsData) => {
-        // console.log(cardsData)
-        setCards(cardsData);
-      })
-      .catch((err) => {
-        console.log(`Ошибка данных при загрузке карточек: ${err}`);
-      });
-  }, []);
+    Promise.all([api.getUser(), api.getAllCards()])
+        .then(([userData, cardsData]) => {
+
+          setCurrentUser(userData);
+
+          setCards(cardsData);
+    })
+        .catch((err) => {
+          console.log(`Ошибка данных при загрузке аватара или карточек: ${err}`);
+        });
+  }, [])
 
   return (
     <div className="page__container">
