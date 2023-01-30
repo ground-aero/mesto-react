@@ -8,6 +8,7 @@ import Card from './Card'
 import ImagePopup from "./ImagePopup";
 import api from '../utils/api'
 import CurrentUserContext from '../contexts/CurrentUserContext';
+import EditProfilePopup from '../components/EditProfilePopup'
 // import {Routes, Route} from 'react-router-dom';
 
 /**
@@ -96,6 +97,17 @@ function App() {
         });
   }
 
+  function handleUpdateUser(name, about) {
+    api.patchUser(name, about)
+        .then((inputValue) => {
+            console.log(inputValue)
+          setCurrentUser(inputValue)
+          closeAllPopups()
+        })
+        .catch((err) => {
+          console.log(`Ошибка при загрузке данных юзера: ${err}`);
+        });
+  }
 
   useEffect(() => {
     Promise.all([api.getUser(), api.getAllCards()])
@@ -109,6 +121,7 @@ function App() {
           console.log(`Ошибка данных при загрузке аватара или карточек: ${err}`);
         });
   }, [])
+
 
 
   return (
@@ -150,47 +163,13 @@ function App() {
           </span>
         </PopupWithForm>
 
-        <PopupWithForm
-          isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}
-          title={'Редактировать профиль'}
-          name={'profile'}
-          textButton={'Сохранить'}
-        >
-          <span className="popup__input-field popup__input-field_wrap">
-            <input
-              type="text"
-              className="popup__input"
-              id="name-input"
-              name="name"
-              placeholder="Ваше имя"
-              minLength="2"
-              maxLength="40"
-              required
-            />
-            <span
-              className="popup__input-span name-input-error"
-              id="input-edit-error"
-            ></span>
-          </span>
-          <span className="popup__input-field popup__input-field_wrap">
-            <input
-              type="text"
-              className="popup__input"
-              id="job-input"
-              name="about"
-              placeholder="О себе"
-              tabIndex="2"
-              minLength="2"
-              maxLength="200"
-              required
-            />
-            <span
-              className="popup__input-span job-input-error"
-              id="input-edit_minimum-error"
-            ></span>
-          </span>
-        </PopupWithForm>
+
+        <EditProfilePopup
+            isOpen={isEditProfilePopupOpen}
+            onClose={closeAllPopups}
+            onUpdateUser={handleUpdateUser}
+        />
+
 
         <PopupWithForm
           isOpen={isAddPlacePopupOpen}
