@@ -12,17 +12,14 @@ function AddPlacePopup ({ isOpen, onClose, onAddPlace }) {
     function handleChangeName(e) {
         setName(e.target.value);
     }
-    function handleChangeAbout(e) {
+    function handleChangeLink(e) {
         setLink(e.target.value);
     }
 
     function handleSubmit(e) {
         e.preventDefault();// Запрещаем браузеру переходить по адресу формы
         /** Передаём значения управляемых компонентов во внешний обработчик */
-        onAddPlace({
-            name,
-            link
-        });
+        onAddPlace({ name, link });
     }
 
     /** После загрузки текущего пользователя из API
@@ -63,7 +60,7 @@ function AddPlacePopup ({ isOpen, onClose, onAddPlace }) {
             <span className="popup__input-field popup__input-field_wrap">
             <input
                 value={link}
-                onChange={handleChangeAbout}
+                onChange={handleChangeLink}
                 type="url"
                 className="popup__input"
                 id="link-input"

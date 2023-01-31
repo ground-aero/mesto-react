@@ -4,15 +4,12 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
-import Card from './Card';
 import ImagePopup from "./ImagePopup";
 import api from '../utils/api';
 import CurrentUserContext from '../contexts/CurrentUserContext';
 import EditProfilePopup from '../components/EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
-
-// import {Routes, Route} from 'react-router-dom';
 
 /**
  * @returns {JSX.Element}
@@ -102,7 +99,6 @@ function App() {
   function handleUpdateUser(name, about) {
     api.patchUser(name, about)
         .then((userData) => {
-            console.log(userData)
           setCurrentUser(userData)
           closeAllPopups()
         })
@@ -111,22 +107,9 @@ function App() {
         });
   }
 
-  function handleAddPlaceSubmit(name, link) {
-      api.addNewCard(name, link)
-          .then((newCard) => {
-              console.log(newCard)
-              setCards([newCard, ...isCards]);
-          })
-          .catch((err) => {
-              console.log(`err при отправке нов карточки на сервер: ${err}`);
-          });
-
-  }
-
   function handleUpdateAvatar(link) {
     api.patchAvatar(link)
         .then((result) => {
-          console.log(result)
           setCurrentUser(result)
           closeAllPopups()
         })
@@ -134,6 +117,17 @@ function App() {
           console.log(`err при загрузке данных аватара: ${err}`);
         });
   }
+
+    function handleAddPlaceSubmit(name, link) {
+        api.addNewCard(name, link)
+            .then((newCard) => {
+                setCards([newCard, ...isCards]);
+                closeAllPopups()
+            })
+            .catch((err) => {
+                console.log(`err при отправке нов карточки на сервер: ${err}`);
+            });
+    }
 
   useEffect(() => {
     Promise.all([api.getUser(), api.getAllCards()])
