@@ -1,11 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import PopupWithForm from "./PopupWithForm";
-import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function EditAvatarPopup ({ isOpen, onClose, onUpdateAvatar }) {
-    const currentUser = React.useContext(CurrentUserContext)
-
-    const [value, setValue] = React.useState('')
 
     /** записываем объект, возвращаемый хуком, в переменную */
     const inputAvatarRef = React.useRef()

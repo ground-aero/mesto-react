@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import api from '../utils/api'
-import {logDOM} from "@testing-library/react";
 import Card from "./Card";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
@@ -20,7 +19,6 @@ function Main({
   // const [userName, setUserName] = useState('')
 
   // const [isCards, setCards] = useState([]);
-
 
   // useEffect(() => {
   //     api.getUser()

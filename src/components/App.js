@@ -9,7 +9,8 @@ import ImagePopup from "./ImagePopup";
 import api from '../utils/api';
 import CurrentUserContext from '../contexts/CurrentUserContext';
 import EditProfilePopup from '../components/EditProfilePopup';
-import EditAvatarPopup from "./EditAvatarPopup";
+import EditAvatarPopup from './EditAvatarPopup';
+import AddPlacePopup from './AddPlacePopup';
 
 // import {Routes, Route} from 'react-router-dom';
 
@@ -94,7 +95,7 @@ function App() {
           setCards((isCards) => isCards.filter(del => del !== card))
         })
         .catch((err) => {
-          console.log(`Ошибка данных при удалении карточки: ${err}`);
+          console.log(`err данных при удалении карточки: ${err}`);
         });
   }
 
@@ -106,8 +107,20 @@ function App() {
           closeAllPopups()
         })
         .catch((err) => {
-          console.log(`Ошибка при загрузке данных юзера: ${err}`);
+          console.log(`err при загрузке данных юзера: ${err}`);
         });
+  }
+
+  function handleAddPlaceSubmit(name, link) {
+      api.addNewCard(name, link)
+          .then((newCard) => {
+              console.log(newCard)
+              setCards([newCard, ...isCards]);
+          })
+          .catch((err) => {
+              console.log(`err при отправке нов карточки на сервер: ${err}`);
+          });
+
   }
 
   function handleUpdateAvatar(link) {
@@ -118,7 +131,7 @@ function App() {
           closeAllPopups()
         })
         .catch((err) => {
-          console.log(`Ошибка при загрузке данных аватара: ${err}`);
+          console.log(`err при загрузке данных аватара: ${err}`);
         });
   }
 
@@ -167,47 +180,14 @@ function App() {
             onUpdateUser={handleUpdateUser}
         />
 
-
-        <PopupWithForm
+        <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
-          title={'Новое место'}
-          name={'place'}
-          textButton={'Создать'}
-        >
-          <span className="popup__input-field popup__input-field_wrap">
-            <input
-              type="text"
-              className="popup__input"
-              id="place-input"
-              name="name"
-              placeholder="Название"
-              tabIndex="1"
-              minLength="2"
-              maxLength="30"
-              required
-            />
-            <span
-              className="popup__input-span place-input-error"
-              id="input-addplace-error"
-            ></span>
-          </span>
-          <span className="popup__input-field popup__input-field_wrap">
-            <input
-              type="url"
-              className="popup__input"
-              id="link-input"
-              name="link"
-              placeholder="Ссылка на картинку"
-              tabIndex="2"
-              required
-            />
-            <span
-              className="popup__input-span link-input-error"
-              id="input-addplace_url-error"
-            ></span>
-          </span>
-        </PopupWithForm>
+          onAddPlace={handleAddPlaceSubmit}
+        />
+
+
+        <PopupWithForm />
 
         <ImagePopup
           onImageClick={handleImageClick}
