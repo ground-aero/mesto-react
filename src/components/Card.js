@@ -1,9 +1,7 @@
-import React, {useEffect, useState} from 'react'
-import api from "../utils/api";
+import React from 'react'
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function Card ({ card, onCardClick, onCardLike, onCardDelete  }) {
-    // console.log(card)
 
     /** Контекст currentUser */
     const currentUser = React.useContext(CurrentUserContext)
@@ -29,7 +27,6 @@ function Card ({ card, onCardClick, onCardLike, onCardDelete  }) {
         onCardDelete(card)
         console.log('deleted card')
     }
-
 
     return (
             <li className="card">

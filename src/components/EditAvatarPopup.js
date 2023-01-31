@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import PopupWithForm from "./PopupWithForm";
 
 function EditAvatarPopup ({ isOpen, onClose, onUpdateAvatar }) {
@@ -10,7 +10,7 @@ function EditAvatarPopup ({ isOpen, onClose, onUpdateAvatar }) {
         e.preventDefault();
 
         onUpdateAvatar({
-            avatar: inputAvatarRef.current.value /* Значение инпута, полученное с помощью рефа */,
+            avatar: inputAvatarRef.current.value /** Значение инпута, полученное с помощью рефа */,
         });
     }
 

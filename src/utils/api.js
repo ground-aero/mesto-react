@@ -7,7 +7,6 @@ export class Api {
         // this._apiConfig = apiConfig;
     }
 
-
     _onResponse(res) {
         if (res.ok) {
             return res.json();//Promise.resolve()

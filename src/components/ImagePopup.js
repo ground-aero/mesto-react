@@ -1,8 +1,7 @@
 import React from 'react';
 
-/* @props card = selectedCard */
+/** @props card = selectedCard */
 function ImagePopup({ card, name, onImageClick, onClose }) {
-    // console.log(card)
 
     return (
             <div className={`popup popup_img-bg popup_type_${ name } ${card.link && 'popup_opened'} id="overlay_img-zoom`}>

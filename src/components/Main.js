@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import api from '../utils/api'
+import React from 'react';
 import Card from "./Card";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
@@ -13,23 +12,6 @@ function Main({
   isCards, children,
 }) {
   const currentUser = React.useContext(CurrentUserContext);
-  // console.log(currentUser)
-  // const [userAvatar, setUserAvatar] = useState('')
-  // const [userDescription, setUserDescription ] = useState('')
-  // const [userName, setUserName] = useState('')
-
-  // const [isCards, setCards] = useState([]);
-
-  // useEffect(() => {
-  //     api.getUser()
-  //         .then((userData) => {
-  //             // console.log(data)
-  //             setUserName(userData.name)
-  //             setUserDescription(userData.about)
-  //             setUserAvatar(userData.avatar)
-  //         })
-  //         .catch((err) => {console.log(`Ошибка запроса загрузки данных пользователя ${err}`)})
-  // }, [])
 
   return (
     <main className="content">
