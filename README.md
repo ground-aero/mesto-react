@@ -1,7 +1,17 @@
 ## 
-**Проект "Mesto-React"**
+## ** CRA App Project / "Mesto-React" **
 
-- [Ссылка на приложение](https://ground-aero.github.io/mesto-react/)
+#### - [link to the project](https://ground-aero.github.io/mesto-react/)
+
+###
+Brief - PW#10: [https://concrete-web-bad.notion.site/10-44b0141395d04b70a56067dde7d0647d](https://concrete-web-bad.notion.site/10-44b0141395d04b70a56067dde7d0647d)
+
+Brief - PW#11: [https://concrete-web-bad.notion.site/11-2ef0d98613394474883ad745cb2189ce](https://concrete-web-bad.notion.site/11-2ef0d98613394474883ad745cb2189ce)
+
+Check-List - PW#10: [https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-10.pdf](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-10.pdf)
+
+Check-List - PW#11: [https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-11.pdf](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-11.pdf)
+
 
 # Getting Started with Create React App
 
@@ -73,9 +83,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-###
-Тех Задание ПР#10: [https://concrete-web-bad.notion.site/10-44b0141395d04b70a56067dde7d0647d](https://concrete-web-bad.notion.site/10-44b0141395d04b70a56067dde7d0647d)
-
-Check-List, PW#10: [https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-10.pdf](https://code.s3.yandex.net/web-developer/checklists-pdf/new-program/checklist-10.pdf)
 
