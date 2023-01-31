@@ -4,17 +4,16 @@ import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function EditProfilePopup ({ isOpen, onClose, onUpdateUser }) {
 
+    /** Стейт, в котором содержится значение инпута */
+    // const [value, setValue] = React.useState('');
     const [name, setName] = React.useState('')
     const [about, setAbout] = React.useState('')
     const currentUser = React.useContext(CurrentUserContext)
-    /** Стейт, в котором содержится значение инпута */
-    const [value, setValue] = React.useState('');
 
     /** Обработчик изменения инпута обновляет стейт */
     function handleChangeName(e) {
         setName(e.target.value);
     }
-    /** Обработчик изменения инпута обновляет стейт */
     function handleChangeAbout(e) {
         setAbout(e.target.value);
     }
@@ -37,14 +36,16 @@ function EditProfilePopup ({ isOpen, onClose, onUpdateUser }) {
 
     return (
         <PopupWithForm
-            isOpen={isOpen}
+            isOpen={ isOpen }
+            onClose={ onClose }
+            onSubmit={handleSubmit}
             title={'Редактировать профиль'}
             name={'profile'}
             textButton={'Сохранить'}
-            onSubmit={handleSubmit}
         >
           <span className="popup__input-field popup__input-field_wrap">
             <input
+                /** Значение элемента «привязывается» к значению стейта */
                 value={name}
                 onChange={handleChangeName}
                 type="text"

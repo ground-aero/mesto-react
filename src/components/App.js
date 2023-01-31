@@ -4,11 +4,13 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
-import Card from './Card'
+import Card from './Card';
 import ImagePopup from "./ImagePopup";
-import api from '../utils/api'
+import api from '../utils/api';
 import CurrentUserContext from '../contexts/CurrentUserContext';
-import EditProfilePopup from '../components/EditProfilePopup'
+import EditProfilePopup from '../components/EditProfilePopup';
+import EditAvatarPopup from "./EditAvatarPopup";
+
 // import {Routes, Route} from 'react-router-dom';
 
 /**
@@ -52,7 +54,6 @@ function App() {
 
   /** Открывает всплывающее добавление карточки */
   function handleAddPlaceClick() {
-    // return document.querySelector('#overlay_add-place').classList.add('popup_opened')
     setIsAddPlacePopupOpen(true);
   }
 
@@ -99,13 +100,25 @@ function App() {
 
   function handleUpdateUser(name, about) {
     api.patchUser(name, about)
-        .then((inputValue) => {
-            console.log(inputValue)
-          setCurrentUser(inputValue)
+        .then((userData) => {
+            console.log(userData)
+          setCurrentUser(userData)
           closeAllPopups()
         })
         .catch((err) => {
           console.log(`Ошибка при загрузке данных юзера: ${err}`);
+        });
+  }
+
+  function handleUpdateAvatar(link) {
+    api.patchAvatar(link)
+        .then((result) => {
+          console.log(result)
+          setCurrentUser(result)
+          closeAllPopups()
+        })
+        .catch((err) => {
+          console.log(`Ошибка при загрузке данных аватара: ${err}`);
         });
   }
 
@@ -140,28 +153,12 @@ function App() {
         />
         <Footer />
 
-        <PopupWithForm
-          isOpen={isEditAvatarPopupOpen}
-          onClose={closeAllPopups}
-          title={'Заменить аватар'}
-          name={'edit-avatar'}
-          textButton={'Сохранить'}
-        >
-          <span className="popup__input-field popup__input-field_wrap">
-            <input
-              type="url"
-              className="popup__input"
-              id="avatar-input"
-              name="linkavatar"
-              placeholder="Ссылка на картинку"
-              required
-            />
-            <span
-              className="popup__input-span avatar-input-error"
-              id="input-edit-avatar-error"
-            ></span>
-          </span>
-        </PopupWithForm>
+
+        <EditAvatarPopup
+            isOpen={isEditAvatarPopupOpen}
+            onClose={closeAllPopups}
+            onUpdateAvatar={handleUpdateAvatar}
+        />
 
 
         <EditProfilePopup
