@@ -23,10 +23,10 @@ function AddPlacePopup ({ isOpen, onClose, onAddPlace }) {
     }
 
     /** После загрузки текущего пользователя из API
-     /* его данные будут использованы в управляемых компонентах. */
+     /* Это компонент добавления карточки. Тут нужно очищать форму */
     React.useEffect(() => {
-        setName(name);
-        setLink(link);
+        setName('');
+        setLink('');
     }, []);
 
     return (

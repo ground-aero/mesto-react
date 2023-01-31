@@ -32,8 +32,8 @@ function App() {
   });
 
   /** Состояние массива карточек */
-  const [isCards, setCards] = React.useState([]);
-  // console.log(isCards);
+  const [cards, setCards] = React.useState([]);
+  // console.log(cards);
 
   /** Состояние выбранной для удаления карточки */
   const [deleteCard, setDeleteCard] = React.useState({_id: ""});
@@ -81,14 +81,17 @@ function App() {
         setCards((state) =>
           state.map((c) => (c._id === card._id ? newCard : c))
         );
-      });
+      })
+        .catch((err) => {
+            console.log(`err данных при лайке: ${err}`);
+        });
   }
 
   function handleCardDelete(card) {
     api.deleteCard(card._id)
         .then(() => {
           /** создать копию массива, исключив из него удалённую карточку. */
-          setCards((isCards) => isCards.filter(del => del !== card))
+          setCards((cards) => cards.filter(del => del !== card))
         })
         .catch((err) => {
           console.log(`err данных при удалении карточки: ${err}`);
@@ -120,7 +123,7 @@ function App() {
     function handleAddPlaceSubmit(name, link) {
         api.addNewCard(name, link)
             .then((newCard) => {
-                setCards([newCard, ...isCards]);
+                setCards([newCard, ...cards]);
                 closeAllPopups()
             })
             .catch((err) => {
@@ -152,7 +155,7 @@ function App() {
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
 
-          isCards={isCards}
+          cards={cards}
           onCardClick={handleCardClick}
           onCardLike={handleCardLike} //лайк/дизлайк
           onCardDelete={handleCardDelete}

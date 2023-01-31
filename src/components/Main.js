@@ -9,7 +9,8 @@ function Main({
   onCardClick,
   onCardLike,
   onCardDelete,
-  isCards, children,
+                cards,
+                children,
 }) {
   const currentUser = React.useContext(CurrentUserContext);
 
@@ -46,7 +47,7 @@ function Main({
 
       <section className="elements content__section">
         <ul className="elements__list">
-          {isCards.map((card, ind) => {
+          {cards.map((card, ind) => {
             return (
               <Card
                 card={card}
